@@ -1,0 +1,24 @@
+Hello, 
+There is a problem when we tried to open a c3d file that is in a another file which is not in the current one.
+We use /.. to go back, and choose the file we wanted.
+```python
+root_path = "/".join(__file__.split("/")[:-1]) + "/.."
+
+c3d_path = "/data/F0_boire_05.c3d"
+```
+If we simply run the script, the path use by python was 
+```python
+"/../data/F0_boire_05.c3d"
+```
+and it doesn't worked, the first "/" cause a problem.
+
+If we debuged the script, the path was
+```python
+"C:/Users/renou/Documents/Stage_immersion/bioptim_exo/tracking/../data/F0_boire_05.c3d"
+```
+And then, it worked
+
+We didn't find the reason, but we find a solution, if we write directly the "../" in the path file, it works
+```python
+c3d_path = "../data/F0_boire_05.c3d"
+```
